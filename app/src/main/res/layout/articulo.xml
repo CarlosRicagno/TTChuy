@@ -1,0 +1,134 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingEnd="50dp">
+    android:layout_width="match_parent"
+    android:layout_height="m"
+    android:layout_gravity="center_horizontal">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PRECIO"
+        android:id="@+id/textView4"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="42dp"
+        android:textSize="30dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Articulo:"
+        android:id="@+id/textViewArticulo"
+        android:layout_marginTop="42dp"
+        android:textSize="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_below="@+id/textView4" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="xxxx"
+        android:id="@+id/textViewArticuloDef"
+        android:layout_below="@+id/textViewArticulo"
+        android:layout_alignStart="@+id/textViewArticulo" />
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OK"
+        android:id="@+id/button_OK"
+        android:layout_marginBottom="61dp"
+        android:layout_marginLeft="30dp"
+        android:layout_alignParentBottom="true"/>
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        android:id="@+id/button_Cancel"
+        android:layout_alignBottom="@+id/button_OK"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="36dp" />
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text=""
+        android:id="@+id/textViewPrecioUDef"
+        android:textSize="30dp"
+        android:layout_below="@+id/textView_Precio_u" />//android:layout_toEndOf="@+id/textViewArticulo"
+    />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Codigo"
+        android:id="@+id/textViewCodigo"
+        android:layout_below="@+id/textViewArticuloDef"
+        android:layout_alignStart="@+id/textViewArticuloDef" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="xxxxx"
+        android:id="@+id/textViewCodigoDef"
+        android:layout_below="@+id/textViewCodigo"
+        android:layout_alignStart="@+id/textViewCodigo" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Piezas"
+        android:id="@+id/textViewPiezas"
+        android:layout_below="@id/textViewCodigoDef"
+        android:layout_alignStart="@+id/textViewArticulo"
+        android:paddingBottom="20dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/editTextPiezas"
+        android:layout_above="@+id/textView_Precio_u"
+        android:layout_toEndOf="@+id/textViewArticulo"
+        android:layout_alignBottom="@id/textViewPiezas"
+        android:text="0" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Precio/u:"
+        android:paddingRight="20dp"
+        android:id="@+id/textView_Precio_u"
+        android:layout_alignStart="@+id/textViewArticuloDef"
+        android:layout_below="@id/textViewPiezas"
+        android:textSize="25dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Total:"
+        android:id="@+id/textViewTotal"
+        android:layout_below="@+id/textViewPrecioUDef"
+        android:layout_alignStart="@+id/button_OK"
+        android:textSize="30dp"
+        />
+
+
+</RelativeLayout>

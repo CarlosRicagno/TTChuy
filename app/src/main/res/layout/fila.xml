@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <TextView android:id='@+id/itemArticulo'
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Articulo"
+        android:layout_marginRight="200dp"
+
+        />
+    <TextView android:id='@+id/itemPrecioUnit'
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Precio Unitario"
+        android:layout_toEndOf="@+id/itemArticulo"
+
+        />
+
+    <TextView android:id='@+id/nombreArticulo'
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Yogurt"
+        android:layout_below='@+id/itemArticulo'
+        android:textAppearance="?android:attr/textAppearanceLarge"
+
+
+        />
+    <TextView android:id='@+id/precioUnitario'
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$45.15"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_below="@+id/itemPrecioUnit"
+        android:layout_alignEnd="@+id/itemPrecioUnit" />
+    <TextView android:id='@+id/codigoBarras'
+        android:layout_below='@+id/precioUnitario'
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Código de Barras"
+
+        />
+    <TextView android:id='@+id/numeroCodigo'
+        android:layout_below="@+id/codigoBarras"
+        android:layout_alignStart='@+id/codigoBarras'
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="7502226811819"
+
+        />
+
+
+    <TextView android:id='@+id/numeroArticulos'
+        android:layout_below="@+id/precioUnitario"
+        android:layout_alignStart='@+id/precioUnitario'
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="10"
+
+        android:layout_alignEnd="@+id/precioUnitario"
+        android:gravity="right" />
+    <TextView android:id='@+id/total'
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below='@+id/numeroCodigo'
+        android:text="Total"
+
+        android:layout_toStartOf="@+id/numeroArticulos" />
+
+
+    <TextView android:id='@+id/precioTotal'
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$75"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_below="@+id/numeroCodigo"
+        android:layout_alignEnd="@+id/precioUnitario"
+        android:layout_alignStart="@+id/numeroArticulos"
+        android:gravity="right" />
+
+    <TextView
+        android:id="@+id/signoPor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="X   "
+        android:gravity="right"
+        android:layout_alignBottom="@+id/numeroArticulos"
+        android:layout_alignEnd="@+id/total" />
+
+
+</RelativeLayout>

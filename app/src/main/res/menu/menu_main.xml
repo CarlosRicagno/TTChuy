@@ -1,0 +1,26 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+tools:context="com.example.carlos.tt_julio.MainActivity">
+<item
+    android:id="@+id/action_settings"
+    android:orderInCategory="100"
+    android:title="@string/action_settings"
+    app:showAsAction="never" />
+<item
+    android:id="@+id/change_location"
+    android:orderInCategory="2"
+    android:title="@string/changeLocation"
+    android:icon="@drawable/ic_local_mall_black_24dp"
+    app:showAsAction="ifRoom" />
+<item
+    android:id="@+id/add_item"
+    android:orderInCategory="1"
+    android:title="@string/addItem"
+    android:icon="@drawable/ic_photo_camera_black_24dp"
+    app:showAsAction="ifRoom" />
+
+
+
+
+</menu>

@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
     EditText textTotal;
     TextView textView_Total;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         //adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list);
         adapter = new ArticuloAdapter(this, list);
-        Button agregarBton = (Button) findViewById(R.id.buttonAgregar);
+
         editText = (EditText) findViewById(R.id.editTextArticulo);
 
         //lista de elementos
@@ -93,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
         mLinearLayoutManager = new LinearLayoutManager(this);
         lv.setLayoutManager(mLinearLayoutManager);
         lv.setAdapter(adapter);
-
+        Button agregarBton = (Button) findViewById(R.id.buttonAgregar);
         textView_Total = (TextView) findViewById(R.id.textViewTotal);
         //set swipe to recylcerview
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
@@ -137,17 +138,16 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    }
 
+    }
     //Se crean los objetos menù u
-    @Override
+
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
-    }
+    };
 
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
@@ -159,8 +159,8 @@ public class MainActivity extends AppCompatActivity {
         Toast toast;
         //noinspection SimplifiableIfStatement)ç
         switch (id) {
-            case R.id.action_settings:
-                return true;
+            //case R.id.action_settings:
+               //return true;
             case R.id.change_location:
                 text = "Cambia tienda!";
                 duration = Toast.LENGTH_SHORT;
@@ -192,6 +192,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
     ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
         @Override
         public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {

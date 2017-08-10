@@ -13,12 +13,7 @@ tools:context="com.example.carlos.tt_julio.MainActivity">
     android:title="@string/changeLocation"
     android:icon="@drawable/ic_local_mall_black_24dp"
     app:showAsAction="ifRoom" />
-<item
-    android:id="@+id/add_item"
-    android:orderInCategory="1"
-    android:title="@string/addItem"
-    android:icon="@drawable/ic_photo_camera_black_24dp"
-    app:showAsAction="ifRoom" />
+
 
 
 

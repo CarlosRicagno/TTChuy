@@ -180,12 +180,12 @@ public class MainActivity extends AppCompatActivity {
                             .show();
                 }*/
 
-            case R.id.add_item:
+           /* case R.id.add_item:
                 text = "Nuevo item!";
                 duration = Toast.LENGTH_SHORT;
                 toast = Toast.makeText(context, text, duration);
                 toast.show();
-                return true;
+                return true;*/
             default:
                 return super.onOptionsItemSelected(item);
         }

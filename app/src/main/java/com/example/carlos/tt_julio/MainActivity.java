@@ -36,6 +36,12 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+import com.google.android.gms.location.places.ui.PlacePicker;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.gms.common.GooglePlayServicesUtil;
+
 
 public class MainActivity extends AppCompatActivity {
     //Se definen variables
@@ -52,7 +58,8 @@ public class MainActivity extends AppCompatActivity {
     private static final String LOG_TAG = "PlacesAPIActivity";
     private static final int GOOGLE_API_CLIENT_ID = 0;
     //  private GoogleApiClient mGoogleApiClient;
-    private static final int PERMISSION_REQUEST_CODE = 100;
+    private static final int PERMISSION_REQUEST_CODE = 10;
+    private static final int PLACE_PICKER_REQUEST = 100;
     ////////////////////
     /**
      * Declaring an ArrayAdapter to set items to ListView
@@ -134,11 +141,6 @@ public class MainActivity extends AppCompatActivity {
                 //new IntentIntegrator(MainActivity).initiateScan();
             }
         });
-
-
-
-
-
     }
     //Se crean los objetos menù u
 
@@ -166,6 +168,19 @@ public class MainActivity extends AppCompatActivity {
                 duration = Toast.LENGTH_SHORT;
                 toast = Toast.makeText(context, text, duration);
                 toast.show();
+                //Aqui le ponemos la parte que dispara el mapa
+                try{
+                    PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
+                    // builder.setLatLngBounds(new LatLng(-33.8523341, 151.2106085));
+                    startActivityForResult(builder.build(this), PLACE_PICKER_REQUEST);
+                }catch(GooglePlayServicesRepairableException e) {
+                    GooglePlayServicesUtil
+                            .getErrorDialog(e.getConnectionStatusCode(), this, 0);
+                } catch (GooglePlayServicesNotAvailableException e) {
+                    Toast.makeText(this, "Google Play Services is not available.",
+                            Toast.LENGTH_LONG)
+                            .show();
+                }
                 //Aqui le ponemos la parte que dispara el mapa
                 /*try{
                     PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
@@ -265,6 +280,17 @@ public class MainActivity extends AppCompatActivity {
                     //textTotal.setText(Float.toString(adapter.cuentaTotal()));
                 }
                 break;
+            }
+            case(PLACE_PICKER_REQUEST):{
+                if (resultCode == RESULT_OK) {
+                    Place selectedPlace = PlacePicker.getPlace(data, this);
+                    String toastMsg = String.format("Place: %s", selectedPlace.getName());
+                    Toast.makeText(this, toastMsg, Toast.LENGTH_LONG).show();
+                }
+                else{
+                    return;
+                }
+
             }
         }
     }

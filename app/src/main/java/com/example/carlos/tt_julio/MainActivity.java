@@ -46,9 +46,11 @@ import com.google.android.gms.common.GooglePlayServicesUtil;
 public class MainActivity extends AppCompatActivity {
     //Se definen variables
     EditText editText;
+    static String store_location = "";
+
+
     protected static final String TAG = "MainActivity";
     protected Location mLastLocation;
-
     protected String mLatitudeLabel;
     protected String mLongitudeLabel;
     protected TextView mLatitudeText;
@@ -133,11 +135,20 @@ public class MainActivity extends AppCompatActivity {
                 }
                 )
         );
+        ////agregar nuevo elemento
         agregarBton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v ) {
                 IntentIntegrator integrator = new IntentIntegrator(MainActivity.this);
-                integrator.initiateScan();
+                if (store_location=="")
+                {
+                    Toast.makeText(getApplicationContext(), "Elige una tienda", Toast.LENGTH_LONG).show();
+                }
+                else
+                {
+                    integrator.initiateScan();
+                }
+
                 //new IntentIntegrator(MainActivity).initiateScan();
             }
         });
@@ -180,6 +191,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(this, "Google Play Services is not available.",
                             Toast.LENGTH_LONG)
                             .show();
+
                 }
                 //Aqui le ponemos la parte que dispara el mapa
                 /*try{
@@ -284,10 +296,12 @@ public class MainActivity extends AppCompatActivity {
             case(PLACE_PICKER_REQUEST):{
                 if (resultCode == RESULT_OK) {
                     Place selectedPlace = PlacePicker.getPlace(data, this);
-                    String toastMsg = String.format("Place: %s", selectedPlace.getName());
+                    String toastMsg = String.format("Place: %s", selectedPlace.getId());
                     Toast.makeText(this, toastMsg, Toast.LENGTH_LONG).show();
+                    store_location = String.format("%s", selectedPlace.getId());
                 }
                 else{
+                    store_location = "";
                     return;
                 }
 
@@ -304,7 +318,9 @@ public class MainActivity extends AppCompatActivity {
             try {
                 //URL url = new URL("http://192.168.33.10/index_prueba_rest_TT.php/countries/" + params[0]);
                 //URL url = new URL("http://192.168.1.76/index_prueba_rest_TT.php/countries/" + params[0]);
-                URL url = new URL("http://192.241.228.193/index.php/countries/"+ params[0]);
+              //  URL url = new URL("http://192.241.228.193/index.php/countries/"+ params[0]);//este es el mero bueno,
+                URL url = new URL("http://192.241.228.193/index_gio.php/countries/"+ params[0]+"/"+store_location);//aquì podria cambai el numero de index apuntado,
+                //http://192.241.228.193/indexG.php/countries/3605521172525/ChIJEZoA_8uLzYUReQNrUSWtGvw
                 connection = (HttpURLConnection) url.openConnection();
                 connection.connect();
                 InputStream stream = connection.getInputStream();

@@ -148,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
                 {
                     integrator.initiateScan();
                 }
-
+                //integrator.initiateScan();
                 //new IntentIntegrator(MainActivity).initiateScan();
             }
         });
@@ -319,8 +319,11 @@ public class MainActivity extends AppCompatActivity {
                 //URL url = new URL("http://192.168.33.10/index_prueba_rest_TT.php/countries/" + params[0]);
                 //URL url = new URL("http://192.168.1.76/index_prueba_rest_TT.php/countries/" + params[0]);
               //  URL url = new URL("http://192.241.228.193/index.php/countries/"+ params[0]);//este es el mero bueno,
-                URL url = new URL("http://192.241.228.193/index_gio.php/countries/"+ params[0]+"/"+store_location);//aquì podria cambai el numero de index apuntado,
-                //http://192.241.228.193/indexG.php/countries/3605521172525/ChIJEZoA_8uLzYUReQNrUSWtGvw
+                //URL url = new URL("http://192.241.228.193/index_gio.php/countries/"+ params[0]+"/"+store_location);//aquì podria cambai el numero de index apuntado,
+                //http://192.241.228.193/indexG.php/countries/3605521172525/ChIJYawEyFiKzYUR7D5z7OKATbY
+               URL url = new URL ("http://192.241.228.193/indexG.php/countries/"+ params[0]+"/"+store_location);
+                //URL url = new URL ("http://192.241.228.193/indexG.php/countries/"+ params[0]);
+
                 connection = (HttpURLConnection) url.openConnection();
                 connection.connect();
                 InputStream stream = connection.getInputStream();

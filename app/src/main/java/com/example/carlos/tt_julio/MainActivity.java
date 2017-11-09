@@ -32,6 +32,8 @@ import java.util.ArrayList;
 import android.location.Location;
 //import com.google.android.gms.common.api.GoogleApiClient;
 import java.net.MalformedURLException;
+import java.util.logging.Handler;
+
 import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -47,7 +49,8 @@ public class MainActivity extends AppCompatActivity {
     //Se definen variables
     EditText editText;
     static String store_location = "";
-
+    public String retunnumfromAsyncTask;
+    private Context mContext;
 
     protected static final String TAG = "MainActivity";
     protected Location mLastLocation;
@@ -79,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
     //recycler
 
     private LinearLayoutManager mLinearLayoutManager;
-
+    AlertDialog alert;
     articulo[] data;
     int id_lista_aux;
     EditText textTotal;
@@ -89,6 +92,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setTitle("Alert Dialog With EditText"); //Set Alert dialog title here
+        alert.setMessage("No se encontro el articulo"); //Message here
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Esta es mi aplicaciòn");
@@ -312,6 +318,7 @@ public class MainActivity extends AppCompatActivity {
     //Esto se necesita para proecesa la imagen del codigo de barras
     public class GetDataTask extends AsyncTask<String, Void, String> {
 
+        @Override
         protected String doInBackground(String... params) {
             HttpURLConnection connection = null;
             BufferedReader reader = null;
@@ -357,21 +364,32 @@ public class MainActivity extends AppCompatActivity {
             return  null;
         }
         @Override
-        protected void onPostExecute(String result){
+        protected void onPostExecute(String result) {
+
             super.onPostExecute(result);
-            AuthMsg msg = new Gson().fromJson(result, AuthMsg.class);
-            String articulo_item = msg.getNombre();
-            float precio = msg.getPrecio();
-            articulo articulo_temp = new articulo();
-            articulo_temp.setNombreArticulo(articulo_item);
-            articulo_temp.setPrecioUnit(precio);
-            list.add(0,articulo_temp);
-            adapter.notifyItemInserted(0);
-            editText.setText("");
-            textView_Total.setText("");
-            textView_Total.append("Total:"+Float.toString(adapter.cuentaTotal()));
+            if (result.equals("false")) {
+                editText.setText("");
+                Toast.makeText(getBaseContext(), "Elemento no encontrado", Toast.LENGTH_LONG).show();
+
+            }
+            else {
+                AuthMsg msg = new Gson().fromJson(result, AuthMsg.class);
+                String articulo_item = msg.getNombre();
+                float precio = msg.getPrecio();
+                articulo articulo_temp = new articulo();
+                articulo_temp.setNombreArticulo(articulo_item);
+                articulo_temp.setPrecioUnit(precio);
+                list.add(0, articulo_temp);
+                adapter.notifyItemInserted(0);
+                editText.setText("");
+                textView_Total.setText("");
+                textView_Total.append("Total:" + Float.toString(adapter.cuentaTotal()));
+
+
+            }
 
         }
+
 
     }
     ///sync
